@@ -20,6 +20,8 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
 '''
 MAP Client Plugin Step
 '''
+import os
+
 from PySide import QtGui
 from PySide import QtCore
 
