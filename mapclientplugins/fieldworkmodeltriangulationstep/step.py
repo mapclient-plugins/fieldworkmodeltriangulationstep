@@ -64,7 +64,10 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
         may be connected up to a button in a widget for example.
         '''
         # Put your execute step code here before calling the '_doneExecution' method.
-        d = [int(x) for x in self._config['discretisation'].split(',')]
+        if 'x' in self._config['discretisation']:
+            d = [int(x) for x in self._config['discretisation'].split('x')]
+        else:
+            d = [int(x) for x in self._config['discretisation'].split(',')]
         if len(d)!=2:
             raise ValueError('Incorrected discretisation: '+self._config['discretisation'])
 
