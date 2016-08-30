@@ -52,7 +52,7 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#faces'))
         self._config = {}
         self._config['identifier'] = ''
-        self._config['discretisation'] = '10x10'
+        self._config['discretisation'] = '10,10'
         self._model = None
         self._v = None
         self._f = None
@@ -64,7 +64,7 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
         may be connected up to a button in a widget for example.
         '''
         # Put your execute step code here before calling the '_doneExecution' method.
-        d = [int(x) for x in self._config['discretisation'].split('x')]
+        d = [int(x) for x in self._config['discretisation'].split(',')]
         if len(d)!=2:
             raise ValueError('Incorrected discretisation: '+self._config['discretisation'])
 
