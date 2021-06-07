@@ -26,7 +26,6 @@ __author__ = 'Ju Zhang'
 __stepname__ = 'Fieldwork Model Triangulation'
 __location__ = 'https://github.com/mapclient-plugins/fieldworkmodeltriangulationstep/archive/v1.0.0.zip'
 
-
 # import class that derives itself from the step mountpoint.
 from mapclientplugins.fieldworkmodeltriangulationstep import step
 

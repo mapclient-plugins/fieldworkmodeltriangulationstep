@@ -25,6 +25,7 @@ import json
 from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.fieldworkmodeltriangulationstep.configuredialog import ConfigureDialog
 
+
 class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
     '''
     Skeleton step which is intended to be a helpful starting point
@@ -33,7 +34,7 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
 
     def __init__(self, location):
         super(FieldworkModelTriangulationStep, self).__init__('Fieldwork Model Triangulation', location)
-        self._configured = False # A step cannot be executed until it has been configured.
+        self._configured = False  # A step cannot be executed until it has been configured.
         self._category = 'Fieldwork'
         # Add any other initialisation code here:
         # self._icon =  QtGui.QImage(':/fieldworkexportstlsurfacestep/images/fieldworkexportstlsurface.png')
@@ -65,8 +66,8 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
             d = [int(x) for x in self._config['discretisation'].split('x')]
         else:
             d = [int(x) for x in self._config['discretisation'].split(',')]
-        if len(d)!=2:
-            raise ValueError('Incorrected discretisation: '+self._config['discretisation'])
+        if len(d) != 2:
+            raise ValueError('Incorrected discretisation: ' + self._config['discretisation'])
 
         self._v, self._f = self._model.triangulate(d, merge=True)
 
@@ -78,10 +79,10 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
         The index is the index of the port in the port list.  If there is only one
         uses port for this step then the index can be ignored.
         '''
-        self._model = dataIn # ju#fieldworkmodel
+        self._model = dataIn  # ju#fieldworkmodel
 
     def getPortData(self, index):
-        if index==1:
+        if index == 1:
             return self._v
         else:
             return self._f
@@ -99,10 +100,10 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
         dlg.setConfig(self._config)
         dlg.validate()
         dlg.setModal(True)
-        
+
         if dlg.exec_():
             self._config = dlg.getConfig()
-        
+
         self._configured = dlg.validate()
         self._configuredObserver()
 
@@ -136,5 +137,3 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
         d.identifierOccursCount = self._identifierOccursCount
         d.setConfig(self._config)
         self._configured = d.validate()
-
-
