@@ -1,54 +1,74 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'qt/configuredialog.ui'
-#
-# Created: Wed Jun  3 21:49:49 2015
-#      by: pyside-uic 0.2.15 running on PySide 1.2.2
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'configuredialog.ui'
+##
+## Created by: Qt User Interface Compiler version 5.15.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide import QtCore, QtGui
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
+        if not Dialog.objectName():
+            Dialog.setObjectName(u"Dialog")
         Dialog.resize(482, 246)
-        self.gridLayout = QtGui.QGridLayout(Dialog)
-        self.gridLayout.setObjectName("gridLayout")
-        self.configGroupBox = QtGui.QGroupBox(Dialog)
-        self.configGroupBox.setTitle("")
-        self.configGroupBox.setObjectName("configGroupBox")
-        self.formLayout = QtGui.QFormLayout(self.configGroupBox)
-        self.formLayout.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout.setObjectName("formLayout")
-        self.idLabel = QtGui.QLabel(self.configGroupBox)
-        self.idLabel.setObjectName("idLabel")
-        self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.idLabel)
-        self.idLineEdit = QtGui.QLineEdit(self.configGroupBox)
-        self.idLineEdit.setObjectName("idLineEdit")
-        self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.idLineEdit)
-        self.discLabel = QtGui.QLabel(self.configGroupBox)
-        self.discLabel.setObjectName("discLabel")
-        self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.discLabel)
-        self.discLineEdit = QtGui.QLineEdit(self.configGroupBox)
-        self.discLineEdit.setObjectName("discLineEdit")
-        self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.discLineEdit)
+        self.gridLayout = QGridLayout(Dialog)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.configGroupBox = QGroupBox(Dialog)
+        self.configGroupBox.setObjectName(u"configGroupBox")
+        self.formLayout = QFormLayout(self.configGroupBox)
+        self.formLayout.setObjectName(u"formLayout")
+        self.formLayout.setFieldGrowthPolicy(QFormLayout.AllNonFixedFieldsGrow)
+        self.idLabel = QLabel(self.configGroupBox)
+        self.idLabel.setObjectName(u"idLabel")
+
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.idLabel)
+
+        self.idLineEdit = QLineEdit(self.configGroupBox)
+        self.idLineEdit.setObjectName(u"idLineEdit")
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.idLineEdit)
+
+        self.discLabel = QLabel(self.configGroupBox)
+        self.discLabel.setObjectName(u"discLabel")
+
+        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.discLabel)
+
+        self.discLineEdit = QLineEdit(self.configGroupBox)
+        self.discLineEdit.setObjectName(u"discLineEdit")
+
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.discLineEdit)
+
+
         self.gridLayout.addWidget(self.configGroupBox, 0, 0, 1, 1)
-        self.buttonBox = QtGui.QDialogButtonBox(Dialog)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
+
+        self.buttonBox = QDialogButtonBox(Dialog)
+        self.buttonBox.setObjectName(u"buttonBox")
+        self.buttonBox.setOrientation(Qt.Horizontal)
+        self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
+
         self.gridLayout.addWidget(self.buttonBox, 1, 0, 1, 1)
 
+        QWidget.setTabOrder(self.idLineEdit, self.discLineEdit)
+        QWidget.setTabOrder(self.discLineEdit, self.buttonBox)
+
         self.retranslateUi(Dialog)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), Dialog.accept)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), Dialog.reject)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
-        Dialog.setTabOrder(self.idLineEdit, self.discLineEdit)
-        Dialog.setTabOrder(self.discLineEdit, self.buttonBox)
+        self.buttonBox.accepted.connect(Dialog.accept)
+        self.buttonBox.rejected.connect(Dialog.reject)
+
+        QMetaObject.connectSlotsByName(Dialog)
+    # setupUi
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "Configure Fieldwork Model Triangulation Step", None, QtGui.QApplication.UnicodeUTF8))
-        self.idLabel.setText(QtGui.QApplication.translate("Dialog", "Identifier:  ", None, QtGui.QApplication.UnicodeUTF8))
-        self.discLabel.setText(QtGui.QApplication.translate("Dialog", "Discretisation:", None, QtGui.QApplication.UnicodeUTF8))
+        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Configure Fieldwork Model Triangulation Step", None))
+        self.configGroupBox.setTitle("")
+        self.idLabel.setText(QCoreApplication.translate("Dialog", u"Identifier:  ", None))
+        self.discLabel.setText(QCoreApplication.translate("Dialog", u"Discretisation:", None))
+    # retranslateUi
 
