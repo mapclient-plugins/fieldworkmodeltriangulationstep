@@ -27,10 +27,10 @@ from mapclientplugins.fieldworkmodeltriangulationstep.configuredialog import Con
 
 
 class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
-    '''
+    """
     Skeleton step which is intended to be a helpful starting point
     for new steps.
-    '''
+    """
 
     def __init__(self, location):
         super(FieldworkModelTriangulationStep, self).__init__('Fieldwork Model Triangulation', location)
@@ -56,11 +56,11 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
         self._f = None
 
     def execute(self):
-        '''
+        """
         Add your code here that will kick off the execution of the step.
         Make sure you call the _doneExecution() method when finished.  This method
         may be connected up to a button in a widget for example.
-        '''
+        """
         # Put your execute step code here before calling the '_doneExecution' method.
         if 'x' in self._config['discretisation']:
             d = [int(x) for x in self._config['discretisation'].split('x')]
@@ -74,11 +74,11 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
         self._doneExecution()
 
     def setPortData(self, index, dataIn):
-        '''
+        """
         Add your code here that will set the appropriate objects for this step.
         The index is the index of the port in the port list.  If there is only one
         uses port for this step then the index can be ignored.
-        '''
+        """
         self._model = dataIn  # ju#fieldworkmodel
 
     def getPortData(self, index):
@@ -88,13 +88,13 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
             return self._f
 
     def configure(self):
-        '''
+        """
         This function will be called when the configure icon on the step is
         clicked.  It is appropriate to display a configuration dialog at this
         time.  If the conditions for the configuration of this step are complete
         then set:
             self._configured = True
-        '''
+        """
         dlg = ConfigureDialog(self._main_window)
         dlg.identifierOccursCount = self._identifierOccursCount
         dlg.setConfig(self._config)
@@ -108,29 +108,29 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
         self._configuredObserver()
 
     def getIdentifier(self):
-        '''
+        """
         The identifier is a string that must be unique within a workflow.
-        '''
+        """
         return self._config['identifier']
 
     def setIdentifier(self, identifier):
-        '''
+        """
         The framework will set the identifier for this step when it is loaded.
-        '''
+        """
         self._config['identifier'] = identifier
 
     def serialize(self):
-        '''
+        """
         Add code to serialize this step to disk. Returns a json string for
         mapclient to serialise.
-        '''
+        """
         return json.dumps(self._config, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
     def deserialize(self, string):
-        '''
+        """
         Add code to deserialize this step from disk. Parses a json string
         given by mapclient
-        '''
+        """
         self._config.update(json.loads(string))
 
         d = ConfigureDialog()
