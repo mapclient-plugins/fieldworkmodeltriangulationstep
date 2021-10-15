@@ -25,25 +25,15 @@ class Ui_Dialog(object):
         self.formLayout = QFormLayout(self.configGroupBox)
         self.formLayout.setObjectName(u"formLayout")
         self.formLayout.setFieldGrowthPolicy(QFormLayout.AllNonFixedFieldsGrow)
-        self.idLabel = QLabel(self.configGroupBox)
-        self.idLabel.setObjectName(u"idLabel")
-
-        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.idLabel)
-
-        self.idLineEdit = QLineEdit(self.configGroupBox)
-        self.idLineEdit.setObjectName(u"idLineEdit")
-
-        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.idLineEdit)
-
         self.discLabel = QLabel(self.configGroupBox)
         self.discLabel.setObjectName(u"discLabel")
 
-        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.discLabel)
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.discLabel)
 
         self.discLineEdit = QLineEdit(self.configGroupBox)
         self.discLineEdit.setObjectName(u"discLineEdit")
 
-        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.discLineEdit)
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.discLineEdit)
 
 
         self.gridLayout.addWidget(self.configGroupBox, 0, 0, 1, 1)
@@ -55,7 +45,6 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.buttonBox, 1, 0, 1, 1)
 
-        QWidget.setTabOrder(self.idLineEdit, self.discLineEdit)
         QWidget.setTabOrder(self.discLineEdit, self.buttonBox)
 
         self.retranslateUi(Dialog)
@@ -68,7 +57,6 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Configure Fieldwork Model Triangulation Step", None))
         self.configGroupBox.setTitle("")
-        self.idLabel.setText(QCoreApplication.translate("Dialog", u"Identifier:  ", None))
         self.discLabel.setText(QCoreApplication.translate("Dialog", u"Discretisation:", None))
     # retranslateUi
 

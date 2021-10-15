@@ -34,7 +34,7 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
 
     def __init__(self, location):
         super(FieldworkModelTriangulationStep, self).__init__('Fieldwork Model Triangulation', location)
-        self._configured = False  # A step cannot be executed until it has been configured.
+        self._configured = True  # A step cannot be executed until it has been configured.
         self._category = 'Fieldwork'
         # Add any other initialisation code here:
         # self._icon =  QtGui.QImage(':/fieldworkexportstlsurfacestep/images/fieldworkexportstlsurface.png')
@@ -49,11 +49,12 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#provides',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#faces'))
         self._config = {}
-        self._config['identifier'] = ''
         self._config['discretisation'] = '10,10'
         self._model = None
         self._v = None
         self._f = None
+
+        self._identifier = ''
 
     def execute(self):
         """
@@ -96,7 +97,6 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
             self._configured = True
         """
         dlg = ConfigureDialog(self._main_window)
-        dlg.identifierOccursCount = self._identifierOccursCount
         dlg.setConfig(self._config)
         dlg.validate()
         dlg.setModal(True)
@@ -111,13 +111,13 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
         """
         The identifier is a string that must be unique within a workflow.
         """
-        return self._config['identifier']
+        return self._identifier
 
     def setIdentifier(self, identifier):
         """
         The framework will set the identifier for this step when it is loaded.
         """
-        self._config['identifier'] = identifier
+        self._identifier = identifier
 
     def serialize(self):
         """
@@ -134,6 +134,5 @@ class FieldworkModelTriangulationStep(WorkflowStepMountPoint):
         self._config.update(json.loads(string))
 
         d = ConfigureDialog()
-        d.identifierOccursCount = self._identifierOccursCount
         d.setConfig(self._config)
         self._configured = d.validate()

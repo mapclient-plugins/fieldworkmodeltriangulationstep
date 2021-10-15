@@ -39,18 +39,10 @@ class ConfigureDialog(QtWidgets.QDialog):
         self._ui = Ui_Dialog()
         self._ui.setupUi(self)
 
-        # Keep track of the previous identifier so that we can track changes
-        # and know how many occurrences of the current identifier there should
-        # be.
-        self._previousIdentifier = ''
-        # Set a place holder for a callable that will get set from the step.
-        # We will use this method to decide whether the identifier is unique.
-        self.identifierOccursCount = None
-
         self._makeConnections()
 
     def _makeConnections(self):
-        self._ui.idLineEdit.textChanged.connect(self.validate)
+        pass
 
     def accept(self):
         """
@@ -73,38 +65,19 @@ class ConfigureDialog(QtWidgets.QDialog):
         set the style sheet to the INVALID_STYLE_SHEET.  Return the outcome of the
         overall validity of the configuration.
         """
-        # Determine if the current identifier is unique throughout the workflow
-        # The identifierOccursCount method is part of the interface to the workflow framework.
-        idValue = self.identifierOccursCount(self._ui.idLineEdit.text())
-        idValid = (idValue == 0) or (idValue == 1 and self._previousIdentifier == self._ui.idLineEdit.text())
-        if idValid:
-            self._ui.idLineEdit.setStyleSheet(DEFAULT_STYLE_SHEET)
-        else:
-            self._ui.idLineEdit.setStyleSheet(INVALID_STYLE_SHEET)
-
-        valid = idValid
-        self._ui.buttonBox.button(QtWidgets.QDialogButtonBox.Ok).setEnabled(valid)
-
-        return valid
+        # It's not currently possible for the configuration to be invalid.
+        return True
 
     def getConfig(self):
         """
-        Get the current value of the configuration from the dialog.  Also
-        set the _previousIdentifier value so that we can check uniqueness of the
-        identifier over the whole of the workflow.
+        Get the current value of the configuration from the dialog.
         """
-        self._previousIdentifier = self._ui.idLineEdit.text()
         config = {}
-        config['identifier'] = self._ui.idLineEdit.text()
         config['discretisation'] = self._ui.discLineEdit.text()
         return config
 
     def setConfig(self, config):
         """
-        Set the current value of the configuration for the dialog.  Also
-        set the _previousIdentifier value so that we can check uniqueness of the
-        identifier over the whole of the workflow.
+        Set the current value of the configuration for the dialog.
         """
-        self._previousIdentifier = config['identifier']
-        self._ui.idLineEdit.setText(config['identifier'])
         self._ui.discLineEdit.setText(config['discretisation'])
