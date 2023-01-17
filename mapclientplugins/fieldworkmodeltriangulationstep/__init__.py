@@ -21,7 +21,7 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
 MAP Client Plugin
 '''
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 __author__ = 'Ju Zhang'
 __stepname__ = 'Fieldwork Model Triangulation'
 __location__ = 'https://github.com/mapclient-plugins/fieldworkmodeltriangulationstep/archive/v1.0.0.zip'
