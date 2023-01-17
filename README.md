@@ -9,7 +9,7 @@ None
 
 Inputs
 ------
-- **fieldworkmodel** [GIAS2 GeometricField instance] : The Fieldwork mesh to be discretised.
+- **fieldworkmodel** [GIAS3 GeometricField instance] : The Fieldwork mesh to be discretised.
 
 Outputs
 -------
